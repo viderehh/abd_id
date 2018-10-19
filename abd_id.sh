@@ -2,14 +2,10 @@
 #
 #  2018/bf
 
-#whats device ip and names
-ip=`ifconfig | egrep "172|192" | awk '{print $2}'`; echo -e "\nIP: $ip"
-local_name=`hostname`; echo "Hostname: $local_name" 
-dns_name=`host $ip 192.168.99.210 | awk '{print $5}'| grep .`;echo "DNS Name: $dns_name"
-echo -e "\nUser Accounts" ; ls /Users/ | egrep -v "\.|Guest|Shared"
+echo -e "\nUser Accounts" ; ls -s /Users/ | egrep -v "Shared|root|total|localized" | awk '{print $2}'
 
 users=`cat /Users/Shared/abd_tmp` # gefüttert aus /Users/Shared/abd_tmp
-echo -e "\nUser | eMail | Status | AdobeID"
+echo -e "\nUser has Adobe Credentials"
 for user in $users
 do
  if [ -f /Users/$user/Library/Application\ Support/Adobe/OOBE/ANEData.db ]; then
@@ -27,3 +23,4 @@ echo -e "$adb_id\n"
 done
 
 exit 0
+
