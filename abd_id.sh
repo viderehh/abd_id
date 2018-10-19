@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#  Bernd Froehlich
+#  2018/bf
 
 #whats device ip and names
 ip=`ifconfig | egrep "172|192" | awk '{print $2}'`; echo -e "\nIP: $ip"
